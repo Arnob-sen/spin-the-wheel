@@ -14,12 +14,12 @@ export default function WinnerModal({ winner, onClose }: WinnerModalProps) {
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center">
+      <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
         <motion.div
           initial={{ scale: 0.5, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.5, opacity: 0 }}
-          className="bg-card p-8 rounded-xl shadow-2xl max-w-2xl w-full mx-4"
+          className="bg-card p-4 sm:p-8 rounded-xl shadow-2xl max-w-2xl w-full mx-auto"
         >
           <motion.div
             initial={{ y: 20, opacity: 0 }}
@@ -38,20 +38,20 @@ export default function WinnerModal({ winner, onClose }: WinnerModalProps) {
                     key={i}
                     className="absolute text-yellow-500"
                     style={{
-                      transform: `rotate(${i * 45}deg) translateY(-3rem)`,
+                      transform: `rotate(${i * 45}deg) translateY(-2rem) scale(${window.innerWidth < 640 ? 0.8 : 1})`,
                     }}
                     size={20}
                   />
                 ))}
               </motion.div>
-              <Trophy className="w-16 h-16 text-yellow-500 mx-auto mb-4" />
+              <Trophy className="w-12 h-12 sm:w-16 sm:h-16 text-yellow-500 mx-auto mb-4" />
             </div>
             
             <motion.h2
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="text-3xl font-bold mb-6"
+              className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6"
             >
               We Have a GOAT!
             </motion.h2>
@@ -62,7 +62,7 @@ export default function WinnerModal({ winner, onClose }: WinnerModalProps) {
               transition={{ delay: 0.6 }}
               className="relative inline-block"
             >
-              <div className="w-32 h-32 rounded-full overflow-hidden ring-4 ring-primary mx-auto mb-4">
+              <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden ring-4 ring-primary mx-auto mb-4">
                 <img
                   src={winner.image}
                   alt={winner.name}
@@ -75,9 +75,10 @@ export default function WinnerModal({ winner, onClose }: WinnerModalProps) {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.8 }}
+              className="px-4"
             >
-              <h3 className="text-2xl font-bold mb-2">{winner.name}</h3>
-              <p className="text-muted-foreground">{winner.bio}</p>
+              <h3 className="text-xl sm:text-2xl font-bold mb-2">{winner.name}</h3>
+              <p className="text-sm sm:text-base text-muted-foreground">{winner.bio}</p>
             </motion.div>
             
             <motion.button
@@ -85,7 +86,7 @@ export default function WinnerModal({ winner, onClose }: WinnerModalProps) {
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 1 }}
               onClick={onClose}
-              className="mt-8 px-6 py-2 bg-primary text-primary-foreground rounded-full hover:opacity-90 transition-opacity"
+              className="mt-6 sm:mt-8 px-6 py-2 bg-primary text-primary-foreground rounded-full hover:opacity-90 transition-opacity"
             >
               Close
             </motion.button>
