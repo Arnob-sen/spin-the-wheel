@@ -26,7 +26,8 @@ export default function WheelSegment({ person, index, totalSegments, segmentSize
       <motion.div 
         className="w-full h-full relative"
         style={{ backgroundColor: color }}
-        whileHover={{ brightness: 1.2 }}
+        whileHover={{ scale: 1.02 }}
+        transition={{ duration: 0.2 }}
       >
         <div 
           className="absolute left-1/2 text-center whitespace-nowrap"

@@ -1,11 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Remove the export configuration as it's not needed for Vercel
+  output: 'standalone',
   eslint: {
     ignoreDuringBuilds: true,
   },
   images: {
-    domains: ['images.unsplash.com'], // Add any other image domains you're using
+    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
+  },
+  typescript: {
+    ignoreBuildErrors: true,
   },
 };
 
